@@ -1,0 +1,13 @@
+{
+    "name": "dimka1c/badm.loc",
+    "type": "n",
+    "license": "n",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "vendor\\": "vendor",
+            "app\\": "class"
+        }
+    }
+}
