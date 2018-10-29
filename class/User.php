@@ -4,6 +4,7 @@ namespace app;
 
 use vendor\DB;
 
+
 class User
 {
 
@@ -25,13 +26,17 @@ class User
         $this->db = DB::instance();
     }
 
-
-    /******** new functionally   */
-
+    /**
+     * Get user data
+     * @param $login string
+     * @param $password string
+     * @return bool
+     */
     public function getUser($login, $password)
     {
         try {
-            $sth = $this->db->pdo->prepare('select 
+            $sth = $this->db->pdo->prepare('
+                select 
 	                badm_user.id, badm_user.name, badm_user.email, badm_user.password,
 	                access.role_read, access.role_write, access.role_delete, access.role_update, access.role_task
                 from badm_user
@@ -89,17 +94,6 @@ class User
         return false;
     }
 
-    public function setNewExpiration($id, $newExpiration)
-    {
-        try {
-            $sth = $this->db->pdo->prepare("UPDATE badm_auth SET expiration = :expiration WHERE user_id = :id");
-            $sth->bindValue(':expiration', $newExpiration, \PDO::PARAM_INT);
-            $sth->bindValue(':id', $id, \PDO::PARAM_INT);
-            $sth->execute();
-        } catch (\Exception $e) {
-
-        }
-    }
 
     public function getUserInfo($id)
     {

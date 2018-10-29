@@ -26,6 +26,10 @@ class ErrorHandler
     public function fatalErrorHandler()
     {
         $error = error_get_last();
-        ob_end_flush();
+        if ( !empty($error) && $error['type'] & ( E_ERROR | E_PARSE | E_COMPILE_ERROR | E_CORE_ERROR ) ) {
+            ob_end_clean();
+        } else {
+            ob_end_flush();
+        }
     }
 }
