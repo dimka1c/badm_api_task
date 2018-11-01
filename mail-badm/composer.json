@@ -1,0 +1,14 @@
+{
+    "name": "dimka1c/badm.loc",
+    "type": "n",
+    "license": "n",
+    "require": {
+        "firebase/php-jwt": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "vendor\\": "vendor",
+            "app\\": "class"
+        }
+    }
+}
